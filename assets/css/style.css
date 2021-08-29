@@ -1,0 +1,221 @@
+html {
+    position: relative;
+}
+
+body {
+    margin-bottom: 120px;
+    background-color: #f5f6fa;
+}
+
+.topbar {
+    min-height: 44px;
+}
+
+.topbar p {
+    color: #1cc88a !important;
+    margin-top: 16px;
+    font-weight: 500;
+}
+
+/* Font Awesome Icons */
+.social-icon {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.social-icon a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+    text-align: center;
+    color: #1cc88a;
+}
+
+.social-icon li {
+    display: inline-block;
+    margin: auto;
+    margin-left: 5px;
+    padding: 0;
+    line-height: normal;
+}
+
+/* Header & Logo */
+#header a {
+    color: #1cc88a;
+    font-size: xx-large;
+}
+
+#header a:hover {
+    text-decoration: none;
+    color: #1cc88a;
+    font-size: xx-large;
+}
+
+
+/* Navbar */
+
+.bg-secondary {
+    background-color: #009051 !important;
+}
+
+nav a {
+    color: #FFF !important;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: #dae2e2 !important;
+    font-weight: 500;
+}
+
+/* visi misi */
+#visi-misi ul li {
+    list-style: none;
+}
+
+/* Content */
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -100px;
+}
+
+.wrapper::after {
+    content: "";
+    display: block;
+}
+
+/* Footer */
+
+.wrapper::after {
+    height: 300px;
+}
+
+#blank-zone {
+    margin-top: 400px;
+}
+
+#footer {
+    height: 310px;
+    background-color: #333;
+    position: absolute;
+    color: #FFFFFF;
+    min-height: 100px;
+    padding-top: 30px;
+    bottom: 0;
+    width: 100%;
+}
+
+#footer #content #berita-footer {
+    padding-left: 0.8rem;
+    list-style-type: georgian;
+}
+
+#footer #content #alamat-footer {
+    padding: 0;
+    list-style-type: none;
+}
+
+#footer #content p,
+#footer #content li {
+    font-size: 0.8rem;
+}
+
+#footer #content hr {
+    text-align: left;
+    margin-left: 0;
+    width: 15%;
+    border: 1px solid;
+    border-color: #999;
+    background-color: #999;
+    color: #999;
+}
+
+#footer hr {
+    border-color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #FFFFFF;
+}
+
+#footer #copyright p {
+    font-size: 0.8rem;
+}
+
+#footer #copyright a {
+    color: #FFFFFF;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: default;
+}
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {}
+
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+    #header a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #header a#header-text {
+        display: none;
+    }
+
+    marquee {
+        display: none;
+    }
+
+    .wrapper::after {
+        height: 100px;
+    }
+
+    #blank-zone {
+        margin-top: 400px;
+    }
+
+    #footer {
+        height: 150px;
+        background-color: #333;
+        position: absolute;
+        color: #FFFFFF;
+        min-height: 100px;
+        padding-top: 30px;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {}
