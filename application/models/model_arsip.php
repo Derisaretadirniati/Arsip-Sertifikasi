@@ -8,7 +8,7 @@ class model_arsip extends CI_Model
 
         $data['title'] = 'Arsip | Desa XYZ';
         $this->load->view('templates/surat/header', $data);
-        $this->load->view('main/surat/tabel/penelitian');
+        $this->load->view('main/surat/tabel/surat');
         $this->load->view('templates/surat/footer');
 
         if ($id = $this->input->get('tg') == 'same_user') {
@@ -25,9 +25,9 @@ class model_arsip extends CI_Model
         return FALSE;
     }
 
-    function hapus_surat($no_surat)
+    function hapus_surat($id)
     {
-        $this->db->where('no_surat', $no_surat);
+        $this->db->where('id', $id);
         $this->db->delete('arsip');
         return true;
     }
@@ -41,5 +41,55 @@ class model_arsip extends CI_Model
     {
         $query = $this->db->get_where('arsip', array('no_surat' => $no_surat));
         return $query->row_array();
+    }
+
+    function edit_pengajuan($data)
+    {
+        $this->db->set('no_surat', $data['no_surat']);
+        $this->db->set('kategori', $data['kategori']);
+        $this->db->set('judul', $data['judul']);
+        $this->db->set('berkas', $data['berkas']);
+        $this->db->where('id', $data['id']);
+        $this->db->update('arsip');
+    }
+
+    public function get($id = null)
+    {
+        if ($id == null) {
+            return $this->db->get('arsip')->result();
+        } else {
+            return $this->db->get_where('arsip', ['id' => $id])->result();
+        }
+    }
+
+    public function update($id, $upload)
+    {
+        $data = array(
+            'no_surat' => $this->input->post('no_surat'),
+            'kategori' => $this->input->post('kategori'),
+            'judul' => $this->input->post('judul'),
+            'berkas' => $upload['berkas']['file_name'],
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('arsip', $data);
+    }
+
+
+    public function upload($filename)
+    {
+        $config['upload_path']          = './uploads/';
+        $config['allowed_types']        = 'pdf';
+        $config['file_name'] = $filename;
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('berkas')) {
+            $return = array('result' => 'success', 'berkas' => $this->upload->data(), 'error' => '');
+            return $return;
+        } else {
+            $return = array('result' => 'failed', 'berkas' => '', 'error' => $this->upload->display_errors());
+            return $return;
+        }
     }
 }

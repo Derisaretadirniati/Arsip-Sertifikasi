@@ -1,44 +1,40 @@
-<!-- berita -->
-<section class="berita" id="berita">
+<section class="surat" id="surat">
     <div class="container-fluid">
         <div class="row">
             <?php
-            $no = 1;
-            $query =  $this->db->get('arsip');
-
+            $query = $this->db->get_where('arsip', array('id' => $id));
             foreach ($query->result() as $row) {
+
             ?>
 
             <div class="col-sm-12">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <h5 class="card-title">Kepada - <?= $row->no_surat; ?></h5>
-                        <p class="card-text">Bertempat pada Kecamatan : <?= $row->kategori; ?></p>
-                        <br><br>
-                        <p class="card-text">Ditulis oleh : <?= $row->judul; ?></p>
-                        <p class="card-text">Tempat : <?= $row->dibuat_pada; ?></p>
+                        <h3 class="card-title">Arsip Surat >> Lihat </h3>
+                        <p class="card-text">Nomor Surat : <?= $row->no_surat; ?></p>
+                        <p class="card-text">Kategori : <?= $row->kategori; ?></p>
+                        <p class="card-text">Judul : <?= $row->judul; ?></p>
+                        <p class="card-text">Waktu unggah : <?= $row->dibuat_pada; ?></p>
                     </div>
                 </div>
-                <center><object type="pdf" data="/uploads/layanan/berkas/ayo.pdf" width="900" height="700"></object>
-                </center>
-                <!-- <img src="<?= base_url(); ?>/uploads/layanan/berkas/<?= $row->berkas; ?>" alt="file berkas.."
-                        class="card-img-top" width="100%" height="500px" /> -->
             </div>
-            <?php
-            }
-            ?>
-            <!-- 
-            <div class="col-sm-3" id="twitter">
-                <div class="card">
-                    <div class="card-body">
-                        <a class="twitter-timeline" data-width="400" data-height="400" data-dnt="true"
-                            data-theme="light" href="https://twitter.com/kesbangkabmlg?ref_src=twsrc%5Etfw">Tweets by
-                            kesbangkabmlg</a>
-                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    </div>
-                </div>
-            </div> -->
+            <iframe src="<?= base_url() ?>/uploads/<?php echo $row->berkas ?>" width="100%" height="500px">
+            </iframe>
+            <br>
+            <br>
+
+
+            <a href="<?= base_url('C_arsip/index') ?>" class="btn btn-success btn-sm">
+                << Kembali </a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="<?= base_url(); ?>C_arsip/download/<?= $row->berkas ?>" class="btn btn-warning">Unduh</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="<?= base_url("C_arsip/edit/" . $row->id) ?>" class="btn btn-info">
+                        <i class="" aria-hidden="true"></i>
+                        <span>Edit / Ganti File</span>
+                    </a>
+                    <?php
+                }
+                    ?>
         </div>
     </div>
 </section>
-<!-- akhir berita -->

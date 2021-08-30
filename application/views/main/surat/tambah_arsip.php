@@ -17,7 +17,8 @@
                     <h6 class="m-0 font-weight-bold text-primary">Masukkan Data:</h6>
                 </div>
                 <div class="card-body">
-                    <?php echo form_open_multipart('Admin/proses_tambaharsip'); ?>
+                    <?php echo form_open_multipart('C_arsip/proses_tambaharsip'); ?>
+                    <?= $this->session->flashdata('message') ?>
                     <div class="form-group">
                         <label for="no_surat">Nomor Surat</label>
                         <input type="id" name="no_surat" id="no_surat" class="form-control">
@@ -40,7 +41,7 @@
                         <input type="file" name="berkas" id="berkas" class="form-control">
                     </div>
                     <br>
-                    <a href="<?= base_url('admin/index') ?>" class="btn btn-security">
+                    <a href="<?= base_url('C_arsip/index') ?>" class="btn btn-security">
                         << Kembali </a>
                             <button type="submit" name="finish" id="finish" value="Finish"
                                 class="btn btn-success">Sukses</button>
